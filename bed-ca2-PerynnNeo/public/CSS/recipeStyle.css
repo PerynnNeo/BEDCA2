@@ -1,0 +1,85 @@
+/* Recipe Container */
+.recipe-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+/* Recipe Image Section */
+.recipe-image {
+  flex: 1 1 40%;
+  max-width: 40%;
+  padding: 10px;
+}
+
+.recipe-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Recipe Details Section */
+.recipe-details {
+  flex: 1 1 60%;
+  max-width: 60%;
+  padding-left: 20px; /* Spacing from the image */
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align text to the top */
+  gap: 15px; /* Add spacing between the elements */
+}
+
+/* Recipe Title */
+.recipe-details h1 {
+  font-size: 2.5rem; /* Make the title larger */
+  color: var(--accent-color);
+  font-weight: bold; /* Ensure it's bold */
+  margin: 0; /* Remove unnecessary margins */
+}
+
+/* Recipe Description */
+.recipe-details p {
+  font-size: 1.2rem; /* Increase paragraph text size */
+  color: var(--text-color); /* Consistent color with the theme */
+  margin: 0; /* Remove default margins */
+}
+
+/* Recipe Details Highlighted Info */
+.recipe-details .details-item {
+  font-size: 1.5rem; /* Highlight skill points and money gain */
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+/* Toggle Buttons Section */
+.toggle-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Toggle Button Styling */
+.toggle-button {
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  border: 2px solid var(--accent-color);
+  background-color: transparent;
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Active Toggle Button */
+.toggle-button.active {
+  background-color: var(--accent-color);
+  color: var(--secondary-color);
+}
+
+/* Spacing Between Toggle Buttons */
+.toggle-button:not(:last-child) {
+  margin-right: 10px;
+}

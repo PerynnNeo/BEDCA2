@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Challenges</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="../img/icon.png" type="image/png">
+
+  <!-- Custom CSS -->
+  <link href="../CSS/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg" id="loggedInNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="../img/icon.png" alt="Website Logo">
+        Recipe Manager
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="recipes.html">Recipes</a></li>
+          <li class="nav-item"><a class="nav-link" href="supermarket.html">Supermarket</a></li>
+          <li class="nav-item"><a class="nav-link" href="inventory.html">Inventory</a></li>
+          <li class="nav-item"><a class="nav-link active" href="challenges.html">Challenges</a></li>
+          <li class="nav-item"><a class="nav-link" href="review.html">Review</a></li>
+          <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="logoutButton">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <nav class="navbar navbar-expand-lg" id="loggedOutNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="../img/icon.png" alt="Website Logo">
+        Recipe Manager
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="recipes.html">Recipes</a></li>
+          <li class="nav-item"><a class="nav-link" href="supermarket.html">Supermarket</a></li>
+         
+          
+          <li class="nav-item"><a class="nav-link" href="review.html">Review</a></li>
+          <li class="nav-item"><a class="nav-link" href="allProfiles.html">Profiles</a></li> 
+          <li class="nav-item nav-item-login"><a class="nav-link" href="login.html">Login</a></li>
+          <li class="nav-item nav-item-register"><a class="nav-link" href="register.html">Register</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<main>
+  <!-- Challenges Section -->
+  <div class="container my-5">
+    <h2 class="text-center mb-3" style="color: var(--accent-color); font-weight: bold;">Fitness Challenges</h2>
+
+    <!-- Add Challenge Button -->
+    <div class="text-center mb-4">
+      <button id="toggleChallengeForm" class="btn btn-primary">+ Add Challenge</button>
+    </div>
+
+    <!-- Hidden Form Section for Adding a Challenge -->
+    <div id="challengeFormContainer" class="card p-4 shadow mb-5 d-none">
+      <h4 class="text-center">Create a New Challenge</h4>
+      <form id="challengeForm">
+        <div class="mb-3">
+          <label for="challengeText" class="form-label">Challenge Description</label>
+          <input type="text" class="form-control" id="challengeText" required>
+        </div>
+        <div class="mb-3">
+          <label for="challengeSkillpoints" class="form-label">Skillpoints</label>
+          <input type="number" class="form-control" id="challengeSkillpoints" min="1" max="200" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Create Challenge</button>
+      </form>
+    </div>
+
+    <!-- Challenges Container (Dynamically Populated) -->
+    <div id="challengesContainer" class="row g-4"></div>
+  </div>
+
+  <!-- Modals Section -->
+  <div class="modals-container">
+
+    <!-- Edit Challenge Modal -->
+    <div class="modal fade" id="editChallengeModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit Challenge</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <label for="editChallengeText">Challenge Description:</label>
+            <input type="text" id="editChallengeText" class="form-control mb-2">
+            <label for="editChallengeSkillpoints">Skillpoints:</label>
+            <input type="number" id="editChallengeSkillpoints" class="form-control mb-2" min="1" max="200">
+            <button id="saveEditButton" class="btn btn-success mt-3">Save Changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Completed Users Modal -->
+    <div class="modal fade" id="completedUsersModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Users Who Completed This Challenge</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <ul id="completedUsersList" class="list-group"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Complete Challenge Modal -->
+    <div class="modal fade" id="completeChallengeModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Complete Challenge</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <label for="completionNotes" class="form-label">Notes:</label>
+            <textarea id="completionNotes" class="form-control" rows="3"></textarea>
+            <input type="hidden" id="challengeIdToComplete">
+          </div>
+          <div class="modal-footer">
+            <button id="confirmCompleteButton" class="btn btn-success">Complete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="deleteChallengeModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-danger">Confirm Deletion</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body text-center">
+            <p>Are you sure you want to delete this challenge?</p>
+            <button id="confirmDeleteButton" class="btn btn-danger">Yes, Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="position-fixed bottom-0 end-0 p-3">
+    <div id="toastContainer" class="toast align-items-center text-white bg-success border-0">
+      <div class="d-flex">
+        <div class="toast-body" id="toastMessage"></div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+      </div>
+    </div>
+  </div>
+</main>
+<!-- Scroll to Top Button -->
+<button id="scrollToTopBtn" class="btn btn-danger rounded-circle shadow-lg position-fixed d-md-none">
+  <i class="bi bi-arrow-up"></i>
+</button>
+  <!-- Footer -->
+  <footer class="text-center bg-dark text-light py-3">
+      <p>&copy; 2025 Recipe & Challenge Manager. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../JS/challenges.js"></script>
+  <script src="../JS/queryCmds.js"></script>
+  <script src="../JS/getCurrentURL.js"></script>
+  <script src="../JS/navShow.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,372 @@
+/* ============================= */
+/*         Global Styles         */
+/* ============================= */
+
+:root {
+  --primary-color: #fcb6d0; /* Soft pink */
+  --secondary-color: #ffe6eb; /* Lighter pink */
+  --accent-color: #f48da6; /* Darker pink for buttons */
+  --title-color: #f56b8d; /* Rich pink for titles */
+  --text-color: #4a4a4a; /* Subtle gray for body text */
+  --gradient-bg: linear-gradient(135deg, #fcb6d0, #ffc2d1); /* Vibrant pink gradient */
+}
+
+body {
+  background: var(--secondary-color);
+  font-family: "Comic Sans MS", cursive;
+  overflow-x: hidden;
+  color: var(--text-color);
+  min-height: 100vh;
+}
+
+html, body {
+  height: 100%; /* Ensures the entire page fills the viewport */
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1; /* Allows the main content to expand, pushing the footer down */
+}
+
+/* ============================= */
+/*         Navbar Styling        */
+/* ============================= */
+
+.navbar {
+  background: var(--gradient-bg);
+  border-radius: 0 0 30px 30px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem 2rem;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--text-color) !important;
+}
+
+.navbar-brand img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.navbar-nav {
+  margin-left: auto;
+}
+
+.navbar-nav .nav-link {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--text-color) !important;
+  padding: 0.5rem 1.5rem;
+  margin: 0 0.5rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--accent-color) !important;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  transform: scale(1.2);
+}
+
+/* ============================= */
+/*         Hero Section          */
+/* ============================= */
+
+.hero {
+  background: var(--gradient-bg);
+  color: var(--text-color);
+  padding: 4rem 2rem;
+  border-radius: 20px;
+  text-align: center;
+  position: relative;
+  overflow: visible;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: var(--title-color);
+}
+
+.hero p {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+}
+
+/* Decorative Elements */
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: var(--primary-color);
+  opacity: 0.25;
+}
+
+.hero::after {
+  top: 10px;
+  right: -60px;
+  width: 180px;
+  height: 180px;
+}
+
+.hero::before {
+  top: -40px;
+  left: -50px;
+  width: 120px;
+  height: 120px;
+}
+
+
+
+.section-title {
+  color: var(--title-color); /* Use rich pink for section title */
+  font-size: 2.2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.features-section {
+  background: var(--gradient-bg);
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  color: var(--text-color);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+.features-section .icon {
+  color: var(--title-color) !important; /* Force pink */
+  font-size: 2rem; /* Adjust icon size */
+  display: block; /* Ensure proper positioning */
+  margin-bottom: 10px; /* Add space below the icon */
+}
+
+
+
+/* ============================= */
+/*        Button Styling         */
+/* ============================= */
+
+.btn-primary {
+  background: var(--accent-color);
+  border: none;
+  font-size: 1.3rem;
+  padding: 0.8rem 2rem;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--primary-color);
+  color: var(--text-color);
+  transform: scale(1.05);
+}
+
+/* Special Buttons */
+.btn-delete {
+  background-color: #ff4f66 !important;
+  color: white !important;
+  border: none;
+}
+
+.btn-complete {
+  background-color: #ddafe6 !important;
+  color: white !important;
+  border: none;
+}
+
+.btn-view {
+  background-color: #dc6776 !important;
+  color: white !important;
+  border: none;
+}
+
+#inventoryButtonContainer {
+  position: sticky;
+  bottom: 20px; /* Distance from the bottom of the viewport */
+  z-index: 1000; /* Ensure it stays above other elements */
+  display: flex;
+  justify-content: center;
+}
+
+.edit-btn {
+  background-color: #ff6699;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+.edit-btn:hover {
+  background-color: #ff3366;
+}
+
+/* ============================= */
+/*         Card Styling          */
+/* ============================= */
+
+.card {
+  border: none;
+  border-radius: 15px;
+  background-color: var(--secondary-color);
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-align: center;
+  padding: 20px;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+  color: var(--title-color);
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  color: var(--text-color);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+/* ============================= */
+/*         Footer Styling        */
+/* ============================= */
+
+footer {
+  background: var(--gradient-bg);
+  color: var(--text-color);
+  border-radius: 20px 20px 0 0;
+  padding: 1.5rem 0;
+  box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+/* ============================= */
+/*         Toast Styling         */
+/* ============================= */
+
+.custom-toast {
+  font-size: 1.2rem;
+  padding: 1.2rem;
+  min-width: 450px;
+  border-radius: 12px;
+}
+
+.custom-toast .toast-body {
+  font-weight: bold;
+}
+
+.custom-toast .btn-close {
+  transform: scale(1.5);
+}
+
+/* ============================= */
+/*        Modal Styling          */
+/* ============================= */
+
+.modal-content {
+  background: #ffe6f2;
+  border-radius: 15px;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  background: #ffb3d9;
+  color: #6b2636;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.modal-header .btn-close {
+  color: #6b2636;
+}
+
+.modal-body {
+  text-align: center;
+  padding: 20px;
+  font-size: 1.1rem;
+}
+
+/* ============================= */
+/*         Responsive Fixes      */
+/* ============================= */
+
+@media (max-width: 576px) {
+  .hero::before,
+  .hero::after {
+    display: none;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar-brand {
+    width: 100%;
+    text-align: center;
+  }
+
+  .navbar-toggler {
+    margin-top: 10px;
+    order: 2;
+    width: 100%;
+  }
+
+  .navbar-collapse {
+    text-align: center;
+  }
+
+  .custom-toast {
+    font-size: 1rem;
+    padding: 1rem;
+    min-width: 200px;
+    border-radius: 8px;
+  }
+
+  .custom-toast .btn-close {
+    transform: scale(1.2);
+  }
+
+  /* Scroll to Top Button */
+#scrollToTopBtn {
+  bottom: 70px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  display: none; /* Hidden by default */
+  font-size: 24px;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease-in-out;
+  background-color: var(--accent-color);
+  border: none;
+}
+
+#scrollToTopBtn.show {
+  display: flex; /* Show when user scrolls */
+}
+}
